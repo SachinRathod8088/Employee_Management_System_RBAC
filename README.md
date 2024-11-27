@@ -2,8 +2,7 @@
 
 •	FullStack Java Project
 •	RBA file contains the single file with Backend and Frontend implemented.
-•	Back_End file contains only backend part
-•	front_End file contains frontend part with application.properties file for Configuration
+
 
 
 #Overview
