@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #45b6fe;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #0e2433;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #45b6fe;
+        }
+
+        h5 {
+            color: red;
+        }
+
+        .container1 {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .tabs button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .tabs button.active {
+            background-color: #0056b3;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        p {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Employee Dashboard</h1>
+        <div class="logout">
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container1">
+            <h2 class="text-center text-success">Employee Details</h2>
+
+            <div class="tabs">
+                <button id="personalBtn" class="active" onclick="showForm('personal')">Personal Details</button>
+                <button id="professionalBtn" onclick="showForm('professional')">Professional Details</button>
+                <button id="financeBtn" onclick="showForm('finance')">Finance Details</button>
+                <button id="projectBtn" onclick="showForm('project')">Project Details</button>
+            </div>
+
+            <div id="personal" class="form-section active">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p><strong>Employee ID:</strong> <span th:text="${employee.empId}"></span></p>
+                        <p><strong>Full Name:</strong> </p>
+                        <p><strong>Email:</strong> </p>
+                        <p><strong>Phone:</strong> </p>
+                        <p><strong>Gender:</strong> </p>
+                        <p><strong>Age:</strong> <span th:text="${employee.age}"></span></p>
+                        <p><strong>D.O.B:</strong> <span th:text="${employee.dob}"></span></p>
+                        <p><strong>Emergency Contact Person:</strong> <span th:text="${employee.emergencyContactName}"></span></p>
+                        <p><strong>Emergency Mob.no:</strong> <span th:text="${employee.emergencyContactMob_no}"></span></p>
+                        <h5 class="mt-4"><u><b>Current Address</b></u></h5>
+                        <p><strong>Address:</strong> <span th:text="${employee.caddressLine1}"></span> <span th:text="${employee.caddressLine2}"></span></p>
+                        <p><strong>City:</strong> <span th:text="${employee.city1}"></span></p>
+                        <p><strong>Pin Code:</strong> <span th:text="${employee.pinCode1}"></span></p>
+                        <h5 class="mt-4"><u><b>Permanent Address</b></u></h5>
+                        <p><strong>Address:</strong> <span th:text="${employee.paddressLine1}"></span> <span th:text="${employee.paddressLine2}"></span></p>
+                        <p><strong>City:</strong> <span th:text="${employee.city2}"></span></p>
+                        <p><strong>Pin Code:</strong> <span th:text="${employee.pinCode2}"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="professional" class="form-section">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p><strong>Company Email:</strong></p>
+                        <p><strong>Office Phone:</strong> </p>
+                        <p><strong>HR Name:</strong> <span th:text="${employee.hrName}"></span></p>
+                        <p><strong>Date Of Joining:</strong> </p>
+                        <p><strong>Office Address:</strong> </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="finance" class="form-section">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p><strong>Pan Card:</strong></p>
+                        <p><strong>Branch Name:</strong> </p>
+                        <p><strong>IFSC Code:</strong> </p>
+                        <p><strong>Aadhar Number:</strong> </p>
+                        <p><strong>CTC BreakUp:</strong> </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="project" class="form-section">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p><strong>Project Code:</strong></p>
+                        <p><strong>Start Date:</strong> </p>
+                        <p><strong>End Date:</strong> </p>
+                        <p><strong>Manager:</strong> </p>
+                        <p><strong>Project Name:</strong> </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Payslip Button -->
+            <a href="/RBA/src/main/resources/templates/payslip.pdf" download="Last_6_Months_Payslip.pdf" class="btn btn-secondary mt-3">Download Last 6 Months Payslips (PDF)</a>
+
+        </div>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            // Hide all form sections
+            var forms = document.getElementsByClassName('form-section');
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].classList.remove('active');
+            }
+
+            // Show the selected form section
+            document.getElementById(formId).classList.add('active');
+
+            // Remove active class from all buttons
+            var buttons = document.querySelectorAll('.tabs button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Add active class to the clicked button
+            document.getElementById(formId + 'Btn').classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
+
+

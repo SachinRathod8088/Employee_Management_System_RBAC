@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{../css/login.css}">
+  </head>
+  <body>
+    <!-- <navbar>-->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="Employee_Management_Syatem">EMPS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/admin/dashboard">Dashboard</a>
+        </li>
+        </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+ <h1 class="text-center">Employee Details Form</h1>
+     <div class="tabs">
+            <button id="personalBtn" class="active" onclick="showForm('personal')">Personal Details</button>
+            <button id="personalBtn"  onclick="showForm('professional')">Professional Details</button>
+            <button id="personalBtn"  onclick="showForm('project')">Project Details</button>
+            <button id="personalBtn"  onclick="showForm('finance')">Finance Details</button>
+        </div>
+
+<form th:action="@{/admin/add}" method="post" >
+<!-- <div id="personal" class="form-section active" > -->
+<!--personal details-->
+<div id="personal" class="form-section active">
+<h5 class="text-start text-success">Personal Details</h5>
+<!-- <form id="personalForm" th:action="@{/admin/add}" method="post" > -->
+<div class="form-group">
+<label>EmploymentCode</label>
+<input type="text" class="form-control" name="empId">
+</div>
+
+<div class="form-group">
+<label>Password</label>
+<input type="text" class="form-control" name="password">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="text" class="form-control" name="personalEmail">
+</div>
+
+<div class="form-group">
+<label>FullName</label>
+<input type="text" class="form-control" name="fullName">
+</div>
+
+<div class="form-group">
+<label>Gender</label>
+<input type="text" class="form-control" name="gender">
+</div>
+
+<div class="form-group">
+<label>AGE</label>
+<input type="text" class="form-control" name="age">
+</div>
+
+<div class="form-group">
+<label>DOB</label>
+<input type="text" class="form-control" name="dob">
+</div>
+<div  class="form-group">
+<div class="row">
+<label>CurrentAddress:-</label>
+<div class="col-md-4">
+                <label for="city1">City</label>
+                <input type="text" class="form-control" id="city1" placeholder="Enter City" name="city1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="pinCode1">Pincode</label>
+                <input type="text" class="form-control" id="pinCode1" placeholder="Enter Pincode" name="pinCode1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="caddressLine1">Address Line 1</label>
+                <input type="text" class="form-control" id="caddressLine1" placeholder="Enter Address Line 1" name="caddressLine1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="caddressLine2">Address Line 2</label>
+                <input type="text" class="form-control" id="caddressLine2" placeholder="Enter Address Line 2" name="caddressLine2">
+            </div>
+</div>
+</div>
+<div  class="form-group">
+<div class="row">
+<label>PermanentAddress:-</label>
+<div class="col-md-4">
+                <label for="city2">City</label>
+                <input type="text" class="form-control" id="city2" placeholder="Enter City" name="city2" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="pinCode2">Pincode</label>
+                <input type="text" class="form-control" id="pinCode2" placeholder="Enter Pincode" name="pinCode2" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="paddressLine1">Address Line 1</label>
+                <input type="text" class="form-control" id="paddressLine1" placeholder="Enter Address Line 1" name="paddressLine1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="paddressLine2">Address Line 2</label>
+                <input type="text" class="form-control" id="paddressLine2" placeholder="Enter Address Line 2" name="paddressLine2">
+            </div>
+</div>
+</div>
+
+<div class="form-group">
+<label>Mobile</label>
+<input type="text" class="form-control" name="mobile">
+</div>
+
+<div class="form-group">
+<label>EmergencyContactName</label>
+<input type="text" class="form-control" name="emergencyContactName">
+</div>
+
+<div class="form-group">
+<label>EmergencyContactNo</label>
+<input type="text" class="form-control" name="emergencyContactMob_no">
+</div>
+</div>
+
+<!-- ============================================================================= 
+<!-- Professional Details Section -->
+            <div id="professional" class="form-section">
+        <h5 class="text-start text-success">Professional Details</h5>
+            <label >Company_Mail</label>
+            <input type="text"  name="companyMail">
+
+            <label >Office Phone</label>
+            <input type="text"  name="officePhone">
+
+            <label >Office Address</label>
+            <div class="row">
+            <div class="col-md-4">
+                <label for="City">City</label>
+                <input type="text" class="form-control" id="city" placeholder="Enter City" name="city" required>
+            </div>
+
+            <div class="col-md-4">
+            <label for="pinCode">Pin Code</label>
+                <input type="text" class="form-control" id="pincode" placeholder="Enter Pincode" name="pinCode" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="address line2">Address Line 2</label>
+                <input type="text" class="form-control" id="address1" placeholder="Enter Address Line 1" name="addressLine1" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="addressLine2">Address Line 2</label>
+                <input type="text" class="form-control" id="address2" placeholder="Enter Address Line 2" name="addressLine1">
+            </div>
+            </div>
+
+            <label >Reporting Manager</label>
+            <input type="text"  name="reportingManagerCode">
+            
+            <label >HR Name</label>
+            <input type="text"  name="hrName">
+            
+            <label >DateOfJoining</label>
+            <input type="text"  name="dateOfJoining">
+            
+            <label>Employment History</label>
+                <div class="row">
+                    <div class="col-md-4">
+                    <label for="addressLine2">Previous Company Name</label>
+                        <input type="text" class="form-control" id="companyName1" placeholder="Company Name" name="companyName">
+                    </div>
+                    <div class="col-md-4">
+                    <label for="addressLine2">Start Date</label>
+                        <input type="text" class="form-control" id="startDate1" placeholder="Start Date" name="joiningDate">
+                    </div>
+                    <div class="col-md-4">
+                    <label for="addressLine2">End Date</label>
+                        <input type="text" class="form-control" id="endDate1" placeholder="End Date" name="endDate1">
+                    </div>
+                </div>
+</div>
+<!-- ================================================================================ 
+<!-- Project Details Section -->
+            <div id="project" class="form-section">
+        <h5 class="text-start text-success">Project Details</h5>
+            <label >Project Code</label>
+            <input type="text"  name="projectCode">
+
+            <label >Start Date</label>
+            <input type="text"  name="startDate">
+
+            <label >End Date</label>
+            <input type="text" name="endDate">
+
+            <label >Project Name</label>
+            <input type="text" name="clientProjectName">
+            
+            <label >Current Manager</label>
+            <input type="text" name="reportingManager">
+</div>
+<!-- ====================================================================
+  <!-- Finance Details Section -->
+<div id="finance" class="form-section">
+<h5 class="text-start text-success">Finance Details</h5>
+    <label>PAN Card:</label>
+    <input type="text"  name="panCard" required><br>
+
+    <label>Aadhar Card:</label>
+    <input type="text" name="aadharCard"required><br>
+
+    <label>Bank Name:</label>
+    <input type="text"  name="bankName"required><br>
+
+    <label>Branch:</label>
+    <input type="text"  name="branch"required><br>
+
+    <label>IFSC Code:</label>
+    <input type="text"  name="ifscCode"required><br>
+
+    <label>CTC Breakup:</label>
+    <input type="text"  name="ctcBreakup"required><br>
+    <button class="btn btn-primary btn-block btn-center" >Submit</button>
+    </div>
+    </form>
+</div>
+
+
+<!--   <script src="/script.js"></script> -->
+<script>
+    function showForm(formId) {
+        // Hide all form sections
+        var forms = document.getElementsByClassName('form-section');
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].classList.remove('active');
+        }
+
+        // Show the selected form section
+        document.getElementById(formId).classList.add('active');
+
+        // Remove active class from all buttons
+        var buttons = document.querySelectorAll('.tabs button');
+        buttons.forEach(button => button.classList.remove('active'));
+
+        // Add active class to the clicked button
+        document.getElementById(formId + 'Btn').classList.add('active');
+    }
+</script>
+</body>
+</html>
